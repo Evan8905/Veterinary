@@ -229,6 +229,20 @@ public class ClientScreen extends javax.swing.JFrame {
 
         Client.createNewClient(id, name, address, pNumber);
         CleanUpForm();
+        Object[] options = {"Sí", "No"};
+
+        // Display the option dialog
+        int choice = JOptionPane.showOptionDialog(null, "¿Desea Registrar una mascota?", "Registro de mascota",
+                JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+
+        // Handle user's choice
+        if (choice == JOptionPane.YES_OPTION) {
+            PetScreen screen = new PetScreen();
+            screen.setLocationRelativeTo(null);
+            screen.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(null, "Puedes completar el registro despues!");
+        }
     }
 
     public void CleanUpForm() {
@@ -260,7 +274,7 @@ public class ClientScreen extends javax.swing.JFrame {
         String address = txtAddress.getText();
         String pNumber = txtPhoneNumber.getText();
 
-       //New Client
+        //New Client
         Client client = new Client(id, name, address, pNumber);
 
         // Update the client

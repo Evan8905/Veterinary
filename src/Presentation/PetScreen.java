@@ -57,14 +57,67 @@ public class PetScreen extends javax.swing.JFrame {
         String breed = txtbreed.getText();
         String age = txtPetAge.getText();
         String weight = txtPetWeight.getText();
-        String medC= txtPetMCondition.getText();
+        String medC = txtPetMCondition.getText();
         String selectedClient = (String) cmbClients.getSelectedItem();
 
-        Pet.CreateNewPet(id,name, breed, age, weight, medC, selectedClient);
+        Pet.CreateNewPet(id, name, breed, age, weight, medC, selectedClient);
         CleanUpForm();
     }
-    
-    
+
+    private void readApet() {
+
+        int id = Integer.parseInt(txtID.getText());
+        String[] petData = Pet.readPet(id);
+        if (petData != null) {
+            String name = petData[0];
+            String breed = petData[1];
+            String age = petData[2];
+            String weight = petData[3];
+            String mConditions = petData[4];
+            String owner = petData[5];
+
+            txtPetName.setText(name);
+            txtbreed.setText(breed);
+            txtPetAge.setText(age);
+            txtPetWeight.setText(weight);
+            txtPetMCondition.setText(mConditions);
+            cmbClients.setSelectedItem(owner);
+
+        } else {
+            JOptionPane.showMessageDialog(null, "Mascota no encontrado", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+
+    }
+
+    public void updateApet() {
+        int id = Integer.parseInt(txtID.getText());
+        String name = txtPetName.getText();
+        String breed = txtbreed.getText();
+        String age = txtPetAge.getText();
+        String weight = txtPetWeight.getText();
+        String medC = txtPetMCondition.getText();
+        String selectedClient = (String) cmbClients.getSelectedItem();
+
+        //New Pet
+        Pet pet = new Pet(id, name, breed, age, weight, medC, selectedClient);
+
+        // Update the Pets file
+        boolean success = pet.updatePets();
+
+        if (success) {
+            JOptionPane.showMessageDialog(null, "Registro de mascota actualizado", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+            CleanUpForm();
+        } else {
+            JOptionPane.showMessageDialog(null, "Error al actualizar datos de mascota", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    public void deleteApet() {
+        int id = Integer.parseInt(txtID.getText());
+        Pet.deletePet(id);
+        CleanUpForm();
+    }
+
     public void CleanUpForm() {
         txtID.setText("");
         txtPetName.setText("");
@@ -288,15 +341,15 @@ public class PetScreen extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCreateActionPerformed
 
     private void btnReadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReadActionPerformed
-
+        readApet();
     }//GEN-LAST:event_btnReadActionPerformed
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
-
+        updateApet();
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
-
+        deleteApet();
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void cmbClientsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbClientsActionPerformed

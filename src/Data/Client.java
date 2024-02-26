@@ -142,7 +142,7 @@ public class Client {
             return false;
         }
 
-        return true; // Si la operación fue exitosa, se devuelve true
+        return true;
     }
 
     public static void deleteClient(int id) {
@@ -175,7 +175,7 @@ public class Client {
 
         } catch (IOException e) {
             e.printStackTrace();
-            // Si hay algún error, imprimir el stack trace y salir del método
+            // retrieve a massage in case of any issue.
             return;
         }
         //Rename the temp file to the original
