@@ -1,9 +1,6 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package Presentation;
 
+import static Utilitary.Manager.validateAuser;
 import javax.swing.JOptionPane;
 
 /**
@@ -26,12 +23,19 @@ public class Login extends javax.swing.JFrame {
         String defaultUser = "Admin";
         String defaultPassword = "Admin";
 
-        if (userName.equals(defaultUser) && password.equals(defaultPassword)) {
+        if (validateAuser(userName, password)) {
             Main Prc = new Main();
             Prc.setLocationRelativeTo(null);
             Prc.setVisible(true);
         } else {
-            JOptionPane.showMessageDialog(null, "Nombre de usuario y/o contraseña Inválido");
+
+            if (userName.equals(defaultUser) && password.equals(defaultPassword)) {
+                Main Prc = new Main();
+                Prc.setLocationRelativeTo(null);
+                Prc.setVisible(true);
+            } else {
+                JOptionPane.showMessageDialog(null, "Nombre de usuario y/o contraseña inválido");
+            }
         }
     }
 

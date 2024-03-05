@@ -1,9 +1,6 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package Presentation;
 
+import Data.User;
 import javax.swing.JOptionPane;
 
 /**
@@ -19,6 +16,93 @@ public class UserScreen extends javax.swing.JFrame {
         initComponents();
     }
 
+    private void getFormInfo() {
+        String fullName = txtFullName.getText();
+        String userName = txtUserName.getText();
+        String password = txtUserPassword.getText();
+        boolean typeSelected = rbtnAdmin.isSelected();
+        boolean statusSelected = rbtnActive.isSelected();
+
+        User.CreateNewUser(fullName, userName, password, typeSelected, statusSelected);
+        CleanUpForm();
+    }
+
+    public void CleanUpForm() {
+        txtFullName.setText("");
+        txtUserName.setText("");
+        txtUserPassword.setText("");
+        buttonGroupType.clearSelection();
+        buttonGroupStatus.clearSelection();
+//        rbtnAdmin.setSelected(false); 
+//        rbtnEmployee.setSelected(false); 
+//        rbtnActive.setSelected(false); 
+//        rbtnInactive.setSelected(false); 
+    }
+
+    private void readAuser() {
+
+        String userN = txtUserName.getText();
+        String[] userData = User.readUsers(userN);
+        if (userData != null) {
+            String fullName = userData[0];
+            String userName = userData[1];
+            String password = userData[2];
+            boolean type = Boolean.parseBoolean(userData[3]);
+            boolean status = Boolean.parseBoolean(userData[4]);
+
+            txtFullName.setText(fullName);
+            txtUserName.setText(userName);
+            txtUserPassword.setText(password);
+
+            if (type) {
+                rbtnAdmin.setSelected(true);
+                rbtnEmployee.setSelected(false);
+            } else {
+                rbtnEmployee.setSelected(true);
+                rbtnAdmin.setSelected(false);
+            }
+
+            if (status) {
+                rbtnActive.setSelected(true);
+                rbtnInactive.setSelected(false);
+            } else {
+                rbtnInactive.setSelected(true);
+                rbtnActive.setSelected(false);
+            }
+
+        } else {
+            JOptionPane.showMessageDialog(null, "Usuario no encontrado", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+
+    }
+
+    public void updateAuser() {
+        String fullName = txtFullName.getText();
+        String userName = txtUserName.getText();
+        String password = txtUserPassword.getText();
+        boolean typeSelected = rbtnAdmin.isSelected();
+        boolean statusSelected = rbtnActive.isSelected();
+
+        //New User
+        User user = new User(fullName, userName, password, typeSelected, statusSelected);
+
+        // Update the users file
+        boolean success = user.updateUsers();
+
+        if (success) {
+            JOptionPane.showMessageDialog(null, "Registro de usuario actualizado", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+            CleanUpForm();
+        } else {
+            JOptionPane.showMessageDialog(null, "Error al actualizar datos de usuario", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    public void deleteAuser() {
+        String userN = txtUserName.getText();
+        User.deleteUser(userN);
+        CleanUpForm();
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -28,19 +112,27 @@ public class UserScreen extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroupType = new javax.swing.ButtonGroup();
+        buttonGroupStatus = new javax.swing.ButtonGroup();
         jLabel3 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         txtUserName = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         txtUserPassword = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        cmbType = new javax.swing.JComboBox<>();
         btnCreate = new javax.swing.JButton();
         btnRead = new javax.swing.JButton();
         btnUpdate = new javax.swing.JButton();
         btnDelete = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        rbtnAdmin = new javax.swing.JRadioButton();
+        rbtnEmployee = new javax.swing.JRadioButton();
+        jLabel6 = new javax.swing.JLabel();
+        rbtnActive = new javax.swing.JRadioButton();
+        rbtnInactive = new javax.swing.JRadioButton();
+        jLabel8 = new javax.swing.JLabel();
+        txtFullName = new javax.swing.JTextField();
         BG = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -60,18 +152,15 @@ public class UserScreen extends javax.swing.JFrame {
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 40, -1, -1));
 
         jLabel7.setText("Nombre  de usuario");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 80, -1, -1));
-        getContentPane().add(txtUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 80, 220, -1));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 140, -1, -1));
+        getContentPane().add(txtUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 140, 280, -1));
 
         jLabel4.setText("Contraseña");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 130, 100, -1));
-        getContentPane().add(txtUserPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 130, 220, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 190, 100, -1));
+        getContentPane().add(txtUserPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 190, 280, -1));
 
         jLabel1.setText("Tipo");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 180, -1, -1));
-
-        cmbType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(cmbType, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 180, 220, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 240, -1, -1));
 
         btnCreate.setText("Crear");
         btnCreate.addActionListener(new java.awt.event.ActionListener() {
@@ -79,7 +168,7 @@ public class UserScreen extends javax.swing.JFrame {
                 btnCreateActionPerformed(evt);
             }
         });
-        getContentPane().add(btnCreate, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 300, -1, -1));
+        getContentPane().add(btnCreate, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 360, -1, -1));
 
         btnRead.setText("Consultar");
         btnRead.addActionListener(new java.awt.event.ActionListener() {
@@ -87,7 +176,7 @@ public class UserScreen extends javax.swing.JFrame {
                 btnReadActionPerformed(evt);
             }
         });
-        getContentPane().add(btnRead, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 300, -1, -1));
+        getContentPane().add(btnRead, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 360, -1, -1));
 
         btnUpdate.setText("Actualizar");
         btnUpdate.addActionListener(new java.awt.event.ActionListener() {
@@ -95,7 +184,7 @@ public class UserScreen extends javax.swing.JFrame {
                 btnUpdateActionPerformed(evt);
             }
         });
-        getContentPane().add(btnUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 300, -1, -1));
+        getContentPane().add(btnUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 360, -1, -1));
 
         btnDelete.setText("Eliminar");
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
@@ -103,13 +192,36 @@ public class UserScreen extends javax.swing.JFrame {
                 btnDeleteActionPerformed(evt);
             }
         });
-        getContentPane().add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 300, -1, -1));
+        getContentPane().add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 360, -1, -1));
 
         jLabel2.setText("Version 1.1");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 480, -1, -1));
 
         jLabel5.setText("Power by UTN Student");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 510, 134, -1));
+
+        buttonGroupType.add(rbtnAdmin);
+        rbtnAdmin.setText("Administrador");
+        getContentPane().add(rbtnAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 240, -1, -1));
+
+        buttonGroupType.add(rbtnEmployee);
+        rbtnEmployee.setText("Colaborador");
+        getContentPane().add(rbtnEmployee, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 240, -1, -1));
+
+        jLabel6.setText("Estado");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 280, -1, -1));
+
+        buttonGroupStatus.add(rbtnActive);
+        rbtnActive.setText("Activo");
+        getContentPane().add(rbtnActive, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 280, -1, -1));
+
+        buttonGroupStatus.add(rbtnInactive);
+        rbtnInactive.setText("Inactivo");
+        getContentPane().add(rbtnInactive, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 280, -1, -1));
+
+        jLabel8.setText("Nombre Completo");
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 90, -1, -1));
+        getContentPane().add(txtFullName, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 90, 280, -1));
 
         BG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/General.png"))); // NOI18N
         getContentPane().add(BG, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 810, 540));
@@ -201,19 +313,19 @@ public class UserScreen extends javax.swing.JFrame {
     }//GEN-LAST:event_itemPetActionPerformed
 
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
-
+        getFormInfo();
     }//GEN-LAST:event_btnCreateActionPerformed
 
     private void btnReadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReadActionPerformed
-
+        readAuser();
     }//GEN-LAST:event_btnReadActionPerformed
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
-
+        updateAuser();
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
-
+        deleteAuser();
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     /**
@@ -257,7 +369,8 @@ public class UserScreen extends javax.swing.JFrame {
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnRead;
     private javax.swing.JButton btnUpdate;
-    private javax.swing.JComboBox<String> cmbType;
+    private javax.swing.ButtonGroup buttonGroupStatus;
+    private javax.swing.ButtonGroup buttonGroupType;
     private javax.swing.JMenuItem itemAppointments;
     private javax.swing.JMenuItem itemClient;
     private javax.swing.JMenuItem itemMedicalRecords;
@@ -270,10 +383,17 @@ public class UserScreen extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JRadioButton rbtnActive;
+    private javax.swing.JRadioButton rbtnAdmin;
+    private javax.swing.JRadioButton rbtnEmployee;
+    private javax.swing.JRadioButton rbtnInactive;
+    private javax.swing.JTextField txtFullName;
     private javax.swing.JTextField txtUserName;
     private javax.swing.JTextField txtUserPassword;
     // End of variables declaration//GEN-END:variables

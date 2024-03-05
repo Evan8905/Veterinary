@@ -1,0 +1,3 @@
+Evan Efren Duarte Solano,ed98,Nose,false,false
+Maria Rojas,Mrojas64,maria123,false,false
+Pamela ,p98,Nosenada,true,true
