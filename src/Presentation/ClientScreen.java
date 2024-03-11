@@ -47,6 +47,7 @@ public class ClientScreen extends javax.swing.JFrame {
         BG = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
+        itemHome = new javax.swing.JMenuItem();
         itemAppointments = new javax.swing.JMenuItem();
         itemMedicalRecords = new javax.swing.JMenuItem();
         itemReports = new javax.swing.JMenuItem();
@@ -57,6 +58,7 @@ public class ClientScreen extends javax.swing.JFrame {
         itemPet = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setText("Version 1.1");
@@ -121,7 +123,20 @@ public class ClientScreen extends javax.swing.JFrame {
 
         jMenu1.setText("Menú");
 
+        itemHome.setText("Inicio");
+        itemHome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemHomeActionPerformed(evt);
+            }
+        });
+        jMenu1.add(itemHome);
+
         itemAppointments.setText("Citas");
+        itemAppointments.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemAppointmentsActionPerformed(evt);
+            }
+        });
         jMenu1.add(itemAppointments);
 
         itemMedicalRecords.setText("Historial");
@@ -193,6 +208,18 @@ public class ClientScreen extends javax.swing.JFrame {
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         deleteAclient();
     }//GEN-LAST:event_btnDeleteActionPerformed
+
+    private void itemHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemHomeActionPerformed
+        Main Prc = new Main();
+        Prc.setLocationRelativeTo(null);
+        Prc.setVisible(true);
+    }//GEN-LAST:event_itemHomeActionPerformed
+
+    private void itemAppointmentsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemAppointmentsActionPerformed
+        AppointmentScreen Prc = new AppointmentScreen();
+        Prc.setLocationRelativeTo(null);
+        Prc.setVisible(true);
+    }//GEN-LAST:event_itemAppointmentsActionPerformed
 
     private void itemMedicalRecordsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemMedicalRecordsActionPerformed
         // TODO add your handling code here:
@@ -338,6 +365,7 @@ public class ClientScreen extends javax.swing.JFrame {
     private javax.swing.JButton btnUpdate;
     private javax.swing.JMenuItem itemAppointments;
     private javax.swing.JMenuItem itemClient;
+    private javax.swing.JMenuItem itemHome;
     private javax.swing.JMenuItem itemMedicalRecords;
     private javax.swing.JMenuItem itemPet;
     private javax.swing.JMenuItem itemReports;

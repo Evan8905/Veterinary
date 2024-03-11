@@ -28,9 +28,13 @@ public class Main extends javax.swing.JFrame {
         lblLogo1 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        btnApointment = new javax.swing.JButton();
+        btnRecords = new javax.swing.JButton();
+        btnReports = new javax.swing.JButton();
         BG = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
+        itemHome = new javax.swing.JMenuItem();
         itemAppointments = new javax.swing.JMenuItem();
         itemMedicalRecords = new javax.swing.JMenuItem();
         itemReports = new javax.swing.JMenuItem();
@@ -42,18 +46,19 @@ public class Main extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(825, 515));
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblLogo.setFont(new java.awt.Font("Yu Gothic Medium", 3, 18)); // NOI18N
         lblLogo.setForeground(new java.awt.Color(0, 153, 204));
         lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/pawprint (1).png"))); // NOI18N
         lblLogo.setText("PetCare");
-        getContentPane().add(lblLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 90, 110, 40));
+        getContentPane().add(lblLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 40, 110, 40));
 
         lblLogo1.setFont(new java.awt.Font("Yu Gothic Medium", 3, 18)); // NOI18N
-        lblLogo1.setForeground(new java.awt.Color(0, 153, 204));
+        lblLogo1.setForeground(new java.awt.Color(0, 153, 153));
         lblLogo1.setText("El cuidado de tu mascota es nuestra prioridad");
-        getContentPane().add(lblLogo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 260, 450, 40));
+        getContentPane().add(lblLogo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 90, 450, 40));
 
         jLabel1.setText("Version 1.1");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 450, -1, -1));
@@ -61,12 +66,55 @@ public class Main extends javax.swing.JFrame {
         jLabel2.setText("Power by UTN Student");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 480, 134, -1));
 
+        btnApointment.setBackground(new java.awt.Color(102, 102, 102));
+        btnApointment.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
+        btnApointment.setForeground(new java.awt.Color(0, 153, 153));
+        btnApointment.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/appointmenticon.png"))); // NOI18N
+        btnApointment.setText("Citas");
+        btnApointment.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, new java.awt.Color(204, 204, 204), new java.awt.Color(51, 255, 255)));
+        btnApointment.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnApointmentActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnApointment, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 280, 130, 90));
+
+        btnRecords.setBackground(new java.awt.Color(102, 102, 102));
+        btnRecords.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
+        btnRecords.setForeground(new java.awt.Color(0, 153, 153));
+        btnRecords.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/HistoricalIcon.png"))); // NOI18N
+        btnRecords.setText("Historial");
+        btnRecords.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, new java.awt.Color(204, 204, 204), new java.awt.Color(51, 255, 255)));
+        getContentPane().add(btnRecords, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 280, 130, 90));
+
+        btnReports.setBackground(new java.awt.Color(102, 102, 102));
+        btnReports.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
+        btnReports.setForeground(new java.awt.Color(0, 153, 153));
+        btnReports.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/reportIcon.png"))); // NOI18N
+        btnReports.setText("Reportes");
+        btnReports.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, new java.awt.Color(204, 204, 204), new java.awt.Color(51, 255, 255)));
+        getContentPane().add(btnReports, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 280, 130, 90));
+
+        BG.setBackground(new java.awt.Color(102, 102, 102));
         BG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/General.png"))); // NOI18N
-        getContentPane().add(BG, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 5, 810, 540));
+        getContentPane().add(BG, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 810, 540));
 
         jMenu1.setText("Menú");
 
+        itemHome.setText("Inicio");
+        itemHome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemHomeActionPerformed(evt);
+            }
+        });
+        jMenu1.add(itemHome);
+
         itemAppointments.setText("Citas");
+        itemAppointments.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemAppointmentsActionPerformed(evt);
+            }
+        });
         jMenu1.add(itemAppointments);
 
         itemMedicalRecords.setText("Historial");
@@ -150,6 +198,24 @@ public class Main extends javax.swing.JFrame {
         open.setVisible(true);
     }//GEN-LAST:event_itemPetActionPerformed
 
+    private void itemAppointmentsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemAppointmentsActionPerformed
+        AppointmentScreen Prc = new AppointmentScreen();
+        Prc.setLocationRelativeTo(null);
+        Prc.setVisible(true);
+    }//GEN-LAST:event_itemAppointmentsActionPerformed
+
+    private void itemHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemHomeActionPerformed
+        Main Prc = new Main();
+        Prc.setLocationRelativeTo(null);
+        Prc.setVisible(true);
+    }//GEN-LAST:event_itemHomeActionPerformed
+
+    private void btnApointmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApointmentActionPerformed
+        AppointmentScreen Prc = new AppointmentScreen();
+        Prc.setLocationRelativeTo(null);
+        Prc.setVisible(true);
+    }//GEN-LAST:event_btnApointmentActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -187,8 +253,12 @@ public class Main extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel BG;
+    private javax.swing.JButton btnApointment;
+    private javax.swing.JButton btnRecords;
+    private javax.swing.JButton btnReports;
     private javax.swing.JMenuItem itemAppointments;
     private javax.swing.JMenuItem itemClient;
+    private javax.swing.JMenuItem itemHome;
     private javax.swing.JMenuItem itemMedicalRecords;
     private javax.swing.JMenuItem itemPet;
     private javax.swing.JMenuItem itemReports;

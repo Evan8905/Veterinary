@@ -58,6 +58,7 @@ public class Login extends javax.swing.JFrame {
         lblBG = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblLogo.setFont(new java.awt.Font("Yu Gothic Medium", 3, 18)); // NOI18N
@@ -73,23 +74,26 @@ public class Login extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 400, 150, -1));
-        getContentPane().add(txtuserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 290, 170, -1));
-        getContentPane().add(txtpassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 340, 170, -1));
+        getContentPane().add(txtuserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 290, 170, -1));
+        getContentPane().add(txtpassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 340, 170, -1));
 
-        lblUserName.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 14)); // NOI18N
+        lblUserName.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 18)); // NOI18N
+        lblUserName.setForeground(new java.awt.Color(0, 102, 102));
         lblUserName.setText("Nombre de Usuario");
         getContentPane().add(lblUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 290, -1, -1));
 
-        lblPassword.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 14)); // NOI18N
+        lblPassword.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 18)); // NOI18N
+        lblPassword.setForeground(new java.awt.Color(0, 102, 102));
         lblPassword.setText("Contraseña");
         getContentPane().add(lblPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 340, 110, -1));
 
         jLabel1.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 102, 102));
         jLabel1.setText("Datos de inicio");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 210, -1, -1));
 
         lblBG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Login (Custom).jpg"))); // NOI18N
-        getContentPane().add(lblBG, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        getContentPane().add(lblBG, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 520));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

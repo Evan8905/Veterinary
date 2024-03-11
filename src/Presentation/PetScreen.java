@@ -253,6 +253,11 @@ public class PetScreen extends javax.swing.JFrame {
         jMenu1.setText("Menú");
 
         itemAppointments.setText("Citas");
+        itemAppointments.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemAppointmentsActionPerformed(evt);
+            }
+        });
         jMenu1.add(itemAppointments);
 
         itemMedicalRecords.setText("Historial");
@@ -309,6 +314,32 @@ public class PetScreen extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
+        getFormInfo();
+    }//GEN-LAST:event_btnCreateActionPerformed
+
+    private void btnReadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReadActionPerformed
+        readApet();
+    }//GEN-LAST:event_btnReadActionPerformed
+
+    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
+        updateApet();
+    }//GEN-LAST:event_btnUpdateActionPerformed
+
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+        deleteApet();
+    }//GEN-LAST:event_btnDeleteActionPerformed
+
+    private void cmbClientsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbClientsActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbClientsActionPerformed
+
+    private void itemAppointmentsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemAppointmentsActionPerformed
+        AppointmentScreen Prc = new AppointmentScreen();
+        Prc.setLocationRelativeTo(null);
+        Prc.setVisible(true);
+    }//GEN-LAST:event_itemAppointmentsActionPerformed
+
     private void itemMedicalRecordsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemMedicalRecordsActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_itemMedicalRecordsActionPerformed
@@ -335,26 +366,6 @@ public class PetScreen extends javax.swing.JFrame {
         open.setLocationRelativeTo(null);
         open.setVisible(true);
     }//GEN-LAST:event_itemPetActionPerformed
-
-    private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
-        getFormInfo();
-    }//GEN-LAST:event_btnCreateActionPerformed
-
-    private void btnReadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReadActionPerformed
-        readApet();
-    }//GEN-LAST:event_btnReadActionPerformed
-
-    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
-        updateApet();
-    }//GEN-LAST:event_btnUpdateActionPerformed
-
-    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
-        deleteApet();
-    }//GEN-LAST:event_btnDeleteActionPerformed
-
-    private void cmbClientsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbClientsActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cmbClientsActionPerformed
 
     /**
      * @param args the command line arguments

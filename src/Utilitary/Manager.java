@@ -19,11 +19,11 @@ public class Manager {
         try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split(",");
-                String userN = parts[1].trim(); // trim() remove white space
+                String userN = parts[1].trim(); // trim() remove white space before and after
                 String pwd = parts[2].trim();
                 
                 if (userName.equals(userN) && password.equals(pwd)) {
-                    JOptionPane.showMessageDialog(null, "Hola," + userN, "Bienvenido", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Hola, " + userN, "Bienvenido", JOptionPane.INFORMATION_MESSAGE);
                     return true;
                 }
             }

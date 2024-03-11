@@ -136,6 +136,7 @@ public class UserScreen extends javax.swing.JFrame {
         BG = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
+        itemHome = new javax.swing.JMenuItem();
         itemAppointments = new javax.swing.JMenuItem();
         itemMedicalRecords = new javax.swing.JMenuItem();
         itemReports = new javax.swing.JMenuItem();
@@ -146,6 +147,7 @@ public class UserScreen extends javax.swing.JFrame {
         itemPet = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel3.setText("Gestionar Usuarios");
@@ -228,7 +230,20 @@ public class UserScreen extends javax.swing.JFrame {
 
         jMenu1.setText("Menú");
 
+        itemHome.setText("Inicio");
+        itemHome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemHomeActionPerformed(evt);
+            }
+        });
+        jMenu1.add(itemHome);
+
         itemAppointments.setText("Citas");
+        itemAppointments.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemAppointmentsActionPerformed(evt);
+            }
+        });
         jMenu1.add(itemAppointments);
 
         itemMedicalRecords.setText("Historial");
@@ -285,6 +300,34 @@ public class UserScreen extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
+        getFormInfo();
+    }//GEN-LAST:event_btnCreateActionPerformed
+
+    private void btnReadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReadActionPerformed
+        readAuser();
+    }//GEN-LAST:event_btnReadActionPerformed
+
+    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
+        updateAuser();
+    }//GEN-LAST:event_btnUpdateActionPerformed
+
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+        deleteAuser();
+    }//GEN-LAST:event_btnDeleteActionPerformed
+
+    private void itemHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemHomeActionPerformed
+        Main Prc = new Main();
+        Prc.setLocationRelativeTo(null);
+        Prc.setVisible(true);
+    }//GEN-LAST:event_itemHomeActionPerformed
+
+    private void itemAppointmentsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemAppointmentsActionPerformed
+        AppointmentScreen Prc = new AppointmentScreen();
+        Prc.setLocationRelativeTo(null);
+        Prc.setVisible(true);
+    }//GEN-LAST:event_itemAppointmentsActionPerformed
+
     private void itemMedicalRecordsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemMedicalRecordsActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_itemMedicalRecordsActionPerformed
@@ -311,22 +354,6 @@ public class UserScreen extends javax.swing.JFrame {
         open.setLocationRelativeTo(null);
         open.setVisible(true);
     }//GEN-LAST:event_itemPetActionPerformed
-
-    private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
-        getFormInfo();
-    }//GEN-LAST:event_btnCreateActionPerformed
-
-    private void btnReadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReadActionPerformed
-        readAuser();
-    }//GEN-LAST:event_btnReadActionPerformed
-
-    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
-        updateAuser();
-    }//GEN-LAST:event_btnUpdateActionPerformed
-
-    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
-        deleteAuser();
-    }//GEN-LAST:event_btnDeleteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -373,6 +400,7 @@ public class UserScreen extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroupType;
     private javax.swing.JMenuItem itemAppointments;
     private javax.swing.JMenuItem itemClient;
+    private javax.swing.JMenuItem itemHome;
     private javax.swing.JMenuItem itemMedicalRecords;
     private javax.swing.JMenuItem itemPet;
     private javax.swing.JMenuItem itemReports;

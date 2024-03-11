@@ -2,3 +2,5 @@
 2020,Evan,CQ san Carlos,85254762
 6464,Fran,Alajuela,85451175
 3535,Pamela,San Jose,3655889
+656265652,Xavier,Ciudad Quesada,5448484884
+0,Veterinaria,CQ,85243695
