@@ -1,3 +1,4 @@
 Evan Efren Duarte Solano,ed98,Nose,true,false
 Maria Rojas,Mrojas64,maria123,false,false
 Pamela ,p98,Nosenada,true,true
+DR Evan,dr, ,true,true

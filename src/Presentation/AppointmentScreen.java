@@ -5,8 +5,11 @@ import Data.Pet;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Locale;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 
@@ -39,8 +42,8 @@ public class AppointmentScreen extends javax.swing.JFrame {
                 if (parts.length >= 2) {
                     String id = parts[0].trim();
                     String name = parts[1].trim();
-                    String displayText = id + " - " + name; // this is how the info is displayed in the combo box.
-                    petList.add(displayText);
+                    String displayText = id + ", " + name; // this is how the info is displayed in the combo box.
+                    petList.add(id);
                 }
             }
             // The model is created.
@@ -86,11 +89,12 @@ public class AppointmentScreen extends javax.swing.JFrame {
         String hourSelected = (String) cmbHour.getSelectedItem();
         String minuteSelected = (String) cmbMinutes.getSelectedItem();
         String timeSystem = (String) cmbAmPm.getSelectedItem();
-        String time = hourSelected + ":" + minuteSelected + ":" + timeSystem;
+
+        //String time = hourSelected + ":" + minuteSelected + ":" + timeSystem;
         String service = (String) cmbServices.getSelectedItem();
         String doctor = (String) cmbDoctor.getSelectedItem();
 
-        Appointment.CreateNewAppointment(petSelected, date, time, service, doctor);
+        Appointment.CreateNewAppointment(petSelected, date, hourSelected, minuteSelected, timeSystem, service, doctor);
 
         //CleanUpForm();
     }
@@ -238,6 +242,11 @@ public class AppointmentScreen extends javax.swing.JFrame {
         getContentPane().add(txtSearchField, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 160, 270, -1));
 
         btnSearch.setText("Buscar");
+        btnSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSearchActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 160, -1, -1));
 
         jLabel9.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
@@ -368,6 +377,50 @@ public class AppointmentScreen extends javax.swing.JFrame {
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         getFormInfo();
     }//GEN-LAST:event_btnSaveActionPerformed
+
+    private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
+        readApet();
+    }//GEN-LAST:event_btnSearchActionPerformed
+
+    private void readApet() {
+        String id = txtSearchField.getText();
+        String[] petData = Appointment.readPet(id);
+        if (petData != null) {
+            String petName = petData[0];
+            String dateString = petData[2]; 
+            String hour = petData[3];
+            String minutes = petData[4];
+            String timeSystem = petData[5];
+            String service = petData[6]; 
+            String doctor = petData[7]; 
+
+            cmbPets.setSelectedItem(petName);
+
+            // object date
+            Date date = null;
+            try {
+                SimpleDateFormat dateFormat = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy", Locale.ENGLISH);
+                date = dateFormat.parse(dateString);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+
+            if (date != null) {
+                // Set the JDateChooser
+                dateChooser.setDate(date);
+            } else {
+                JOptionPane.showMessageDialog(null, "Error al convertir la fecha", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+
+            cmbHour.setSelectedItem(hour);
+            cmbMinutes.setSelectedItem(minutes);
+            cmbAmPm.setSelectedItem(timeSystem);
+            cmbServices.setSelectedItem(service);
+            cmbDoctor.setSelectedItem(doctor);
+        } else {
+            JOptionPane.showMessageDialog(null, "Mascota no encontrada", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
 
     /**
      * @param args the command line arguments
