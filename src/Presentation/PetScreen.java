@@ -160,6 +160,7 @@ public class PetScreen extends javax.swing.JFrame {
         BG = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
+        itemHome = new javax.swing.JMenuItem();
         itemAppointments = new javax.swing.JMenuItem();
         itemMedicalRecords = new javax.swing.JMenuItem();
         itemReports = new javax.swing.JMenuItem();
@@ -252,6 +253,14 @@ public class PetScreen extends javax.swing.JFrame {
 
         jMenu1.setText("Menú");
 
+        itemHome.setText("Inicio");
+        itemHome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemHomeActionPerformed(evt);
+            }
+        });
+        jMenu1.add(itemHome);
+
         itemAppointments.setText("Citas");
         itemAppointments.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -334,6 +343,12 @@ public class PetScreen extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cmbClientsActionPerformed
 
+    private void itemHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemHomeActionPerformed
+        Main Prc = new Main();
+        Prc.setLocationRelativeTo(null);
+        Prc.setVisible(true);
+    }//GEN-LAST:event_itemHomeActionPerformed
+
     private void itemAppointmentsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemAppointmentsActionPerformed
         AppointmentScreen Prc = new AppointmentScreen();
         Prc.setLocationRelativeTo(null);
@@ -341,12 +356,16 @@ public class PetScreen extends javax.swing.JFrame {
     }//GEN-LAST:event_itemAppointmentsActionPerformed
 
     private void itemMedicalRecordsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemMedicalRecordsActionPerformed
-        // TODO add your handling code here:
+        RecordScreen Prc = new RecordScreen();
+        Prc.setLocationRelativeTo(null);
+        Prc.setVisible(true);
     }//GEN-LAST:event_itemMedicalRecordsActionPerformed
 
     private void item_logoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_item_logoutActionPerformed
-        JOptionPane.showMessageDialog(null, "Saliendo del Sistema...");
-        System.exit(0);
+        JOptionPane.showMessageDialog(null, "Cerrando Sesión...");
+        Login Prc = new Login();
+        Prc.setLocationRelativeTo(null);
+        Prc.setVisible(true);
     }//GEN-LAST:event_item_logoutActionPerformed
 
     private void itemUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemUserActionPerformed
@@ -411,6 +430,7 @@ public class PetScreen extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cmbClients;
     private javax.swing.JMenuItem itemAppointments;
     private javax.swing.JMenuItem itemClient;
+    private javax.swing.JMenuItem itemHome;
     private javax.swing.JMenuItem itemMedicalRecords;
     private javax.swing.JMenuItem itemPet;
     private javax.swing.JMenuItem itemReports;

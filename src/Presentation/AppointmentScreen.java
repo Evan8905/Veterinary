@@ -199,7 +199,7 @@ public class AppointmentScreen extends javax.swing.JFrame {
         jLabel7.setText("Procedimiento Clinico");
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 280, -1, -1));
 
-        cmbServices.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Consulta Médica", "Vacunacion", "Cirugía", "Corte de pelo", "Esterilización", "Otros Procedimientos" }));
+        cmbServices.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Consulta Médica", "Vacunación", "Cirugía", "Corte de pelo", "Esterilización", "Otros Procedimientos" }));
         getContentPane().add(cmbServices, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 280, 200, -1));
 
         jLabel8.setBackground(new java.awt.Color(0, 102, 102));
@@ -219,6 +219,11 @@ public class AppointmentScreen extends javax.swing.JFrame {
         getContentPane().add(btnSave, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 370, -1, -1));
 
         btnUpdate.setText("Actualizar");
+        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 370, -1, -1));
 
         btnDelete.setText("Eliminar");
@@ -335,6 +340,18 @@ public class AppointmentScreen extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
+        getFormInfo();
+    }//GEN-LAST:event_btnSaveActionPerformed
+
+    private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
+        readApet();
+    }//GEN-LAST:event_btnSearchActionPerformed
+
+    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
+        updateAnAppointment();
+    }//GEN-LAST:event_btnUpdateActionPerformed
+
     private void itemHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemHomeActionPerformed
         Main Prc = new Main();
         Prc.setLocationRelativeTo(null);
@@ -348,12 +365,16 @@ public class AppointmentScreen extends javax.swing.JFrame {
     }//GEN-LAST:event_itemAppointmentsActionPerformed
 
     private void itemMedicalRecordsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemMedicalRecordsActionPerformed
-        // TODO add your handling code here:
+        RecordScreen Prc = new RecordScreen();
+        Prc.setLocationRelativeTo(null);
+        Prc.setVisible(true);
     }//GEN-LAST:event_itemMedicalRecordsActionPerformed
 
     private void item_logoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_item_logoutActionPerformed
-        JOptionPane.showMessageDialog(null, "Saliendo del Sistema...");
-        System.exit(0);
+        JOptionPane.showMessageDialog(null, "Cerrando Sesión...");
+        Login Prc = new Login();
+        Prc.setLocationRelativeTo(null);
+        Prc.setVisible(true);
     }//GEN-LAST:event_item_logoutActionPerformed
 
     private void itemUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemUserActionPerformed
@@ -374,25 +395,17 @@ public class AppointmentScreen extends javax.swing.JFrame {
         open.setVisible(true);
     }//GEN-LAST:event_itemPetActionPerformed
 
-    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
-        getFormInfo();
-    }//GEN-LAST:event_btnSaveActionPerformed
-
-    private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
-        readApet();
-    }//GEN-LAST:event_btnSearchActionPerformed
-
     private void readApet() {
         String id = txtSearchField.getText();
         String[] petData = Appointment.readPet(id);
         if (petData != null) {
             String petName = petData[0];
-            String dateString = petData[2]; 
-            String hour = petData[3];
-            String minutes = petData[4];
-            String timeSystem = petData[5];
-            String service = petData[6]; 
-            String doctor = petData[7]; 
+            String dateString = petData[1];
+            String hour = petData[2];
+            String minutes = petData[3];
+            String timeSystem = petData[4];
+            String service = petData[5];
+            String doctor = petData[6];
 
             cmbPets.setSelectedItem(petName);
 
@@ -421,6 +434,45 @@ public class AppointmentScreen extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Mascota no encontrada", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
+
+    public void updateAnAppointment() {
+        String petSelected = (String) cmbPets.getSelectedItem();
+        Date date = dateChooser.getDate();
+        String hourSelected = (String) cmbHour.getSelectedItem();
+        String minuteSelected = (String) cmbMinutes.getSelectedItem();
+        String timeSystem = (String) cmbAmPm.getSelectedItem();
+
+        //String time = hourSelected + ":" + minuteSelected + ":" + timeSystem;
+        String service = (String) cmbServices.getSelectedItem();
+        String doctor = (String) cmbDoctor.getSelectedItem();
+
+        //New Appointment
+        Appointment appointment = new Appointment(petSelected, date, hourSelected, minuteSelected, timeSystem, service, doctor);
+
+        // Update the appointment file
+        boolean success = appointment.updateAppointment();
+
+        if (success) {
+            JOptionPane.showMessageDialog(null, "Registro de cita actualizado", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+            //CleanUpForm();
+        } else {
+            JOptionPane.showMessageDialog(null, "Error al actualizar datos de mascota", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    public void deleteAnAppointment() {
+        String id = (String) cmbPets.getSelectedItem();
+        Appointment.deleteAppointment(id);
+        //CleanUpForm();
+    }
+//    public void CleanUpForm() {
+//        txtID.setText("");
+//        txtPetName.setText("");
+//        txtbreed.setText("");
+//        txtPetAge.setText("");
+//        txtPetWeight.setText("");
+//        txtPetMCondition.setText("");
+//    }
 
     /**
      * @param args the command line arguments

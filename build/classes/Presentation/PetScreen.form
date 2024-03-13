@@ -9,6 +9,14 @@
             <Property name="text" type="java.lang.String" value="Men&#xfa;"/>
           </Properties>
           <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="itemHome">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Inicio"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="itemHomeActionPerformed"/>
+              </Events>
+            </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="itemAppointments">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Citas"/>

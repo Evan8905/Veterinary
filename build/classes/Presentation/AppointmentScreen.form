@@ -324,7 +324,7 @@
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="6">
             <StringItem index="0" value="Consulta M&#xe9;dica"/>
-            <StringItem index="1" value="Vacunacion"/>
+            <StringItem index="1" value="Vacunaci&#xf3;n"/>
             <StringItem index="2" value="Cirug&#xed;a"/>
             <StringItem index="3" value="Corte de pelo"/>
             <StringItem index="4" value="Esterilizaci&#xf3;n"/>
@@ -392,6 +392,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Actualizar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnUpdateActionPerformed"/>
+      </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
           <AbsoluteConstraints x="170" y="370" width="-1" height="-1"/>

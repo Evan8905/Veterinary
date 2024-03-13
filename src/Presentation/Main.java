@@ -85,6 +85,11 @@ public class Main extends javax.swing.JFrame {
         btnRecords.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/HistoricalIcon.png"))); // NOI18N
         btnRecords.setText("Historial");
         btnRecords.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, new java.awt.Color(204, 204, 204), new java.awt.Color(51, 255, 255)));
+        btnRecords.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRecordsActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnRecords, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 280, 130, 90));
 
         btnReports.setBackground(new java.awt.Color(102, 102, 102));
@@ -172,7 +177,9 @@ public class Main extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void itemMedicalRecordsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemMedicalRecordsActionPerformed
-        // TODO add your handling code here:
+        RecordScreen Prc = new RecordScreen();
+        Prc.setLocationRelativeTo(null);
+        Prc.setVisible(true);
     }//GEN-LAST:event_itemMedicalRecordsActionPerformed
 
     private void item_logoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_item_logoutActionPerformed
@@ -215,6 +222,12 @@ public class Main extends javax.swing.JFrame {
         Prc.setLocationRelativeTo(null);
         Prc.setVisible(true);
     }//GEN-LAST:event_btnApointmentActionPerformed
+
+    private void btnRecordsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRecordsActionPerformed
+        RecordScreen Prc = new RecordScreen();
+        Prc.setLocationRelativeTo(null);
+        Prc.setVisible(true);
+    }//GEN-LAST:event_btnRecordsActionPerformed
 
     /**
      * @param args the command line arguments

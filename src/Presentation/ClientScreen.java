@@ -222,12 +222,16 @@ public class ClientScreen extends javax.swing.JFrame {
     }//GEN-LAST:event_itemAppointmentsActionPerformed
 
     private void itemMedicalRecordsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemMedicalRecordsActionPerformed
-        // TODO add your handling code here:
+        RecordScreen Prc = new RecordScreen();
+        Prc.setLocationRelativeTo(null);
+        Prc.setVisible(true);
     }//GEN-LAST:event_itemMedicalRecordsActionPerformed
 
     private void item_logoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_item_logoutActionPerformed
-        JOptionPane.showMessageDialog(null, "Saliendo del Sistema...");
-        System.exit(0);
+        JOptionPane.showMessageDialog(null, "Cerrando Sesión...");
+        Login Prc = new Login();
+        Prc.setLocationRelativeTo(null);
+        Prc.setVisible(true);
     }//GEN-LAST:event_item_logoutActionPerformed
 
     private void itemUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemUserActionPerformed

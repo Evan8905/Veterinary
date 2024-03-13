@@ -1,0 +1,2 @@
+REG0001,30,Prueba ahora si,Prueba,Prueba ahora si,Prueba,Prueba ahora si
+REG0002,62626262,afasdf,fasdf,fasdf,fasdf,fasdf
