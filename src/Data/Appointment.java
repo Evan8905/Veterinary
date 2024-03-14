@@ -18,7 +18,8 @@ import javax.swing.JOptionPane;
  * @author eefre
  */
 public class Appointment {
-
+    
+    private String refId;
     private String pet;
     private Date date;
     private String hour;
@@ -27,7 +28,8 @@ public class Appointment {
     private String service;
     private String doctor;
 
-    public Appointment(String pet, Date date, String hour, String minutes, String timeSystem, String service, String doctor) {
+    public Appointment(String refId, String pet, Date date, String hour, String minutes, String timeSystem, String service, String doctor) {
+        this.refId = refId;
         this.pet = pet;
         this.date = date;
         this.hour = hour;
@@ -35,6 +37,14 @@ public class Appointment {
         this.timeSystem = timeSystem;
         this.service = service;
         this.doctor = doctor;
+    }
+
+    public String getRefId() {
+        return refId;
+    }
+
+    public void setRefId(String refId) {
+        this.refId = refId;
     }
 
     public String getPet() {
@@ -93,11 +103,13 @@ public class Appointment {
         this.doctor = doctor;
     }
 
-    public static void CreateNewAppointment(String pet, Date date, String hour, String minutes, String timeSystem, String service, String doctor) {
+    
+
+    public static void CreateNewAppointment(String refId, String pet, Date date, String hour, String minutes, String timeSystem, String service, String doctor) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("Appointment.txt", true))) {
-            writer.write(pet + "," + date + "," + hour + "," + minutes + "," + timeSystem + "," + service + "," + doctor);
+            writer.write(refId + "," +pet + "," + date + "," + hour + "," + minutes + "," + timeSystem + "," + service + "," + doctor);
             writer.newLine();
-            JOptionPane.showMessageDialog(null, "Datos de cita guardados", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Cita " + refId+ " guardado con Éxito", "Éxito", JOptionPane.INFORMATION_MESSAGE);
         } catch (IOException e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Datos NO Guardados", "Error", JOptionPane.ERROR_MESSAGE);
@@ -105,7 +117,7 @@ public class Appointment {
 
     }
 
-    public static String[] readPet(String id) {
+    public static String[] readPet(String refid) {
         String fileName = "Appointment.txt";
         String line;
 
@@ -113,8 +125,8 @@ public class Appointment {
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split(",");
                 String petId = parts[0];
-                if (petId.equals(id)) {
-                    String[] data = new String[7];
+                if (petId.equals(refid)) {
+                    String[] data = new String[8];
                     for (int i = 0; i < parts.length; i++) {
                         data[i] = parts[i];
                     }
@@ -138,9 +150,9 @@ public class Appointment {
                 String[] parts = line.split(",");
                 String petId = parts[0];
 
-                if (petId.equals(pet)) {
+                if (petId.equals(refId)) {
                     //if the pet ID is found, the information is gonna be updated.
-                    writer.write(pet + "," + date + "," + hour + "," + minutes + "," + timeSystem + "," + service + "," + doctor);
+            writer.write(refId + "," +pet + "," + date + "," + hour + "," + minutes + "," + timeSystem + "," + service + "," + doctor);
                     writer.newLine();
                 } else {
                     // otherwise the information remain the same or rewrite.
@@ -179,7 +191,7 @@ public class Appointment {
         return true;
     }
     
-    public static void deleteAppointment(String id) {
+    public static void deleteAppointment(String refId) {
         String fileName = "Appointment.txt";
         String tempFileName = "Appointment_temp.txt";
 
@@ -191,7 +203,7 @@ public class Appointment {
                 String[] parts = line.split(",");
                 String petId = parts[0];
 
-                if (!petId.equals(id)) {
+                if (!petId.equals(refId)) {
                     
                     writer.write(line);
                     writer.newLine();

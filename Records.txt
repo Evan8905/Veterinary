@@ -1,2 +1,4 @@
-REG0001,30,Prueba ahora si,Prueba,Prueba ahora si,Prueba,Prueba ahora si
-REG0002,62626262,afasdf,fasdf,fasdf,fasdf,fasdf
+REG0001,3030,NA,NA,NA,NA,NA
+REG0002,3030,No tiene nada,No fue necesario,NA,Nada,Nada
+REG0003,8181,No tiene,Nada,Nada,Nada,Nada
+REG0004,4040,Na,NaNa,Na,Na,Na

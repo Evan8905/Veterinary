@@ -2,6 +2,7 @@ package Presentation;
 
 import Data.Appointment;
 import Data.Pet;
+import Utilitary.Manager;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -11,6 +12,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 /**
@@ -27,6 +29,7 @@ public class AppointmentScreen extends javax.swing.JFrame {
 
     public AppointmentScreen() {
         initComponents();
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setPets();
         setDoctor();
     }
@@ -42,8 +45,8 @@ public class AppointmentScreen extends javax.swing.JFrame {
                 if (parts.length >= 2) {
                     String id = parts[0].trim();
                     String name = parts[1].trim();
-                    String displayText = id + ", " + name; // this is how the info is displayed in the combo box.
-                    petList.add(id);
+                    String displayText = id + " - " + name; // this is how the info is displayed in the combo box.
+                    petList.add(displayText);
                 }
             }
             // The model is created.
@@ -83,6 +86,7 @@ public class AppointmentScreen extends javax.swing.JFrame {
     }
 
     private void getFormInfo() {
+        String recid = Manager.generateAppointmentID();
 
         String petSelected = (String) cmbPets.getSelectedItem();
         Date date = dateChooser.getDate();
@@ -94,7 +98,7 @@ public class AppointmentScreen extends javax.swing.JFrame {
         String service = (String) cmbServices.getSelectedItem();
         String doctor = (String) cmbDoctor.getSelectedItem();
 
-        Appointment.CreateNewAppointment(petSelected, date, hourSelected, minuteSelected, timeSystem, service, doctor);
+        Appointment.CreateNewAppointment(recid, petSelected, date, hourSelected, minuteSelected, timeSystem, service, doctor);
 
         //CleanUpForm();
     }
@@ -126,12 +130,12 @@ public class AppointmentScreen extends javax.swing.JFrame {
         btnSave = new javax.swing.JButton();
         btnUpdate = new javax.swing.JButton();
         btnDelete = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tableMascota = new javax.swing.JTable();
         txtSearchField = new javax.swing.JTextField();
         btnSearch = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
         lblLogo = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        txtDisplayConsecutive = new javax.swing.JTextField();
         BG = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -161,31 +165,31 @@ public class AppointmentScreen extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 102, 102));
         jLabel2.setText("Seleccione un paciente");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 160, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, -1, -1));
 
-        getContentPane().add(cmbPets, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 160, 200, -1));
+        getContentPane().add(cmbPets, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 170, 200, -1));
 
         jLabel3.setBackground(new java.awt.Color(0, 102, 102));
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 102, 102));
         jLabel3.setText("Seleccione una fecha");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, -1, -1));
-        getContentPane().add(dateChooser, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 200, 200, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 210, -1, -1));
+        getContentPane().add(dateChooser, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 210, 200, -1));
 
         jLabel4.setBackground(new java.awt.Color(0, 102, 102));
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 102, 102));
         jLabel4.setText("Hora de la cita");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 240, -1, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 250, -1, -1));
 
         cmbAmPm.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "AM", "PM" }));
-        getContentPane().add(cmbAmPm, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 240, 60, -1));
+        getContentPane().add(cmbAmPm, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 250, 60, -1));
 
         cmbHour.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" }));
-        getContentPane().add(cmbHour, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 240, 50, -1));
+        getContentPane().add(cmbHour, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 250, 50, -1));
 
         cmbMinutes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "00", "10", "20", "30", "40", "50" }));
-        getContentPane().add(cmbMinutes, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 240, 50, -1));
+        getContentPane().add(cmbMinutes, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 250, 50, -1));
 
         jLabel5.setText("Version 1.1");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 460, -1, -1));
@@ -197,18 +201,18 @@ public class AppointmentScreen extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(0, 102, 102));
         jLabel7.setText("Procedimiento Clinico");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 280, -1, -1));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 290, -1, -1));
 
         cmbServices.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Consulta Médica", "Vacunación", "Cirugía", "Corte de pelo", "Esterilización", "Otros Procedimientos" }));
-        getContentPane().add(cmbServices, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 280, 200, -1));
+        getContentPane().add(cmbServices, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 290, 200, -1));
 
         jLabel8.setBackground(new java.awt.Color(0, 102, 102));
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(0, 102, 102));
         jLabel8.setText("Médico a cargo");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 320, -1, -1));
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 330, -1, -1));
 
-        getContentPane().add(cmbDoctor, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 320, 200, -1));
+        getContentPane().add(cmbDoctor, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 330, 200, -1));
 
         btnSave.setText("Guardar");
         btnSave.addActionListener(new java.awt.event.ActionListener() {
@@ -216,7 +220,7 @@ public class AppointmentScreen extends javax.swing.JFrame {
                 btnSaveActionPerformed(evt);
             }
         });
-        getContentPane().add(btnSave, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 370, -1, -1));
+        getContentPane().add(btnSave, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 380, -1, -1));
 
         btnUpdate.setText("Actualizar");
         btnUpdate.addActionListener(new java.awt.event.ActionListener() {
@@ -224,26 +228,15 @@ public class AppointmentScreen extends javax.swing.JFrame {
                 btnUpdateActionPerformed(evt);
             }
         });
-        getContentPane().add(btnUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 370, -1, -1));
+        getContentPane().add(btnUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 380, -1, -1));
 
         btnDelete.setText("Eliminar");
-        getContentPane().add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 370, -1, -1));
-
-        tableMascota.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-        tableMascota.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Nombre", "Procedimiento", "Fecha", "Médico"
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteActionPerformed(evt);
             }
-        ));
-        jScrollPane1.setViewportView(tableMascota);
-
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 200, 380, 200));
+        });
+        getContentPane().add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 380, -1, -1));
         getContentPane().add(txtSearchField, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 160, 270, -1));
 
         btnSearch.setText("Buscar");
@@ -263,7 +256,16 @@ public class AppointmentScreen extends javax.swing.JFrame {
         lblLogo.setForeground(new java.awt.Color(0, 153, 204));
         lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/pawprint (1).png"))); // NOI18N
         lblLogo.setText("PetCare");
-        getContentPane().add(lblLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 20, 110, 40));
+        getContentPane().add(lblLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 20, 130, 50));
+
+        jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(0, 102, 102));
+        jLabel10.setText("# Registro");
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, -1, -1));
+
+        txtDisplayConsecutive.setEditable(false);
+        txtDisplayConsecutive.setFocusable(false);
+        getContentPane().add(txtDisplayConsecutive, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 130, 100, -1));
 
         BG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/General.png"))); // NOI18N
         getContentPane().add(BG, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 810, 550));
@@ -295,6 +297,11 @@ public class AppointmentScreen extends javax.swing.JFrame {
         jMenu1.add(itemMedicalRecords);
 
         itemReports.setText("Reportes");
+        itemReports.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemReportsActionPerformed(evt);
+            }
+        });
         jMenu1.add(itemReports);
 
         item_logout.setText("Salir");
@@ -352,6 +359,10 @@ public class AppointmentScreen extends javax.swing.JFrame {
         updateAnAppointment();
     }//GEN-LAST:event_btnUpdateActionPerformed
 
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+        deleteAnAppointment();
+    }//GEN-LAST:event_btnDeleteActionPerformed
+
     private void itemHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemHomeActionPerformed
         Main Prc = new Main();
         Prc.setLocationRelativeTo(null);
@@ -369,6 +380,12 @@ public class AppointmentScreen extends javax.swing.JFrame {
         Prc.setLocationRelativeTo(null);
         Prc.setVisible(true);
     }//GEN-LAST:event_itemMedicalRecordsActionPerformed
+
+    private void itemReportsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemReportsActionPerformed
+        ReportsScreen Prc = new ReportsScreen();
+        Prc.setLocationRelativeTo(null);
+        Prc.setVisible(true);
+    }//GEN-LAST:event_itemReportsActionPerformed
 
     private void item_logoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_item_logoutActionPerformed
         JOptionPane.showMessageDialog(null, "Cerrando Sesión...");
@@ -399,13 +416,14 @@ public class AppointmentScreen extends javax.swing.JFrame {
         String id = txtSearchField.getText();
         String[] petData = Appointment.readPet(id);
         if (petData != null) {
-            String petName = petData[0];
-            String dateString = petData[1];
-            String hour = petData[2];
-            String minutes = petData[3];
-            String timeSystem = petData[4];
-            String service = petData[5];
-            String doctor = petData[6];
+            String refId = petData[0];
+            String petName = petData[1];
+            String dateString = petData[2];
+            String hour = petData[3];
+            String minutes = petData[4];
+            String timeSystem = petData[5];
+            String service = petData[6];
+            String doctor = petData[7];
 
             cmbPets.setSelectedItem(petName);
 
@@ -424,7 +442,7 @@ public class AppointmentScreen extends javax.swing.JFrame {
             } else {
                 JOptionPane.showMessageDialog(null, "Error al convertir la fecha", "Error", JOptionPane.ERROR_MESSAGE);
             }
-
+            txtDisplayConsecutive.setText(refId);
             cmbHour.setSelectedItem(hour);
             cmbMinutes.setSelectedItem(minutes);
             cmbAmPm.setSelectedItem(timeSystem);
@@ -436,6 +454,8 @@ public class AppointmentScreen extends javax.swing.JFrame {
     }
 
     public void updateAnAppointment() {
+        String recid = txtDisplayConsecutive.getText();
+        txtDisplayConsecutive.setText(recid);
         String petSelected = (String) cmbPets.getSelectedItem();
         Date date = dateChooser.getDate();
         String hourSelected = (String) cmbHour.getSelectedItem();
@@ -447,7 +467,7 @@ public class AppointmentScreen extends javax.swing.JFrame {
         String doctor = (String) cmbDoctor.getSelectedItem();
 
         //New Appointment
-        Appointment appointment = new Appointment(petSelected, date, hourSelected, minuteSelected, timeSystem, service, doctor);
+        Appointment appointment = new Appointment(recid, petSelected, date, hourSelected, minuteSelected, timeSystem, service, doctor);
 
         // Update the appointment file
         boolean success = appointment.updateAppointment();
@@ -461,8 +481,9 @@ public class AppointmentScreen extends javax.swing.JFrame {
     }
 
     public void deleteAnAppointment() {
-        String id = (String) cmbPets.getSelectedItem();
-        Appointment.deleteAppointment(id);
+        String recid = txtDisplayConsecutive.getText();
+        //String id = (String) cmbPets.getSelectedItem();
+        Appointment.deleteAppointment(recid);
         //CleanUpForm();
     }
 //    public void CleanUpForm() {
@@ -531,6 +552,7 @@ public class AppointmentScreen extends javax.swing.JFrame {
     private javax.swing.JMenuItem itemUser;
     private javax.swing.JMenuItem item_logout;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -542,9 +564,8 @@ public class AppointmentScreen extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblLogo;
-    private javax.swing.JTable tableMascota;
+    private javax.swing.JTextField txtDisplayConsecutive;
     private javax.swing.JTextField txtSearchField;
     // End of variables declaration//GEN-END:variables
 }

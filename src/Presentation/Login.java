@@ -19,26 +19,30 @@ public class Login extends javax.swing.JFrame {
     public void validateUser() {
         String userName = txtuserName.getText();
         String password = txtpassword.getText();
+        String userS = "true"; 
 
         String defaultUser = "Admin";
         String defaultPassword = "Admin";
 
-        if (validateAuser(userName, password)) {
+        if (validateAuser(userName, password, userS)) {
             Main Prc = new Main();
             Prc.setLocationRelativeTo(null);
             Prc.setVisible(true);
         } else {
-
             if (userName.equals(defaultUser) && password.equals(defaultPassword)) {
                 Main Prc = new Main();
                 Prc.setLocationRelativeTo(null);
                 Prc.setVisible(true);
             } else {
-                JOptionPane.showMessageDialog(null, "Nombre de usuario y/o contraseña inválido");
+                if (!userName.equals(defaultUser) || !password.equals(defaultPassword)) {
+                    JOptionPane.showMessageDialog(null, "Usuario no existe o está inactivo.", "Usuario Inactivo", JOptionPane.WARNING_MESSAGE);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Nombre de usuario y/o contraseña inválido");
+                }
             }
         }
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -147,4 +151,5 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JPasswordField txtpassword;
     private javax.swing.JTextField txtuserName;
     // End of variables declaration//GEN-END:variables
+
 }

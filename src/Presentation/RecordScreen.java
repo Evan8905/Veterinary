@@ -8,6 +8,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JFrame;
 
 /**
  *
@@ -22,6 +23,8 @@ public class RecordScreen extends javax.swing.JFrame {
 
     public RecordScreen() {
         initComponents();
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
         setPets();
     }
 
@@ -109,24 +112,31 @@ public class RecordScreen extends javax.swing.JFrame {
         lblLogo.setText("PetCare");
         getContentPane().add(lblLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 20, 110, 40));
 
+        jLabel2.setForeground(new java.awt.Color(0, 102, 102));
         jLabel2.setText("# Registro");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 130, -1, -1));
 
+        jLabel3.setForeground(new java.awt.Color(0, 102, 102));
         jLabel3.setText("ID Mascota");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 170, -1, -1));
 
+        jLabel4.setForeground(new java.awt.Color(0, 102, 102));
         jLabel4.setText("Diagnóstico");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 210, -1, -1));
 
+        jLabel5.setForeground(new java.awt.Color(0, 102, 102));
         jLabel5.setText("Tratamientos");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 250, -1, -1));
 
+        jLabel6.setForeground(new java.awt.Color(0, 102, 102));
         jLabel6.setText("Estudios Médicos");
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 290, -1, -1));
 
+        jLabel7.setForeground(new java.awt.Color(0, 102, 102));
         jLabel7.setText("Medicamentos Recetados");
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 330, -1, -1));
 
+        jLabel8.setForeground(new java.awt.Color(0, 102, 102));
         jLabel8.setText("Vacunas Administradas");
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 370, -1, -1));
 
@@ -188,6 +198,8 @@ public class RecordScreen extends javax.swing.JFrame {
         BG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/General.png"))); // NOI18N
         getContentPane().add(BG, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 530));
 
+        jMenuBar1.setForeground(new java.awt.Color(0, 102, 102));
+
         jMenu1.setText("Menú");
 
         itemHome.setText("Inicio");
@@ -215,6 +227,11 @@ public class RecordScreen extends javax.swing.JFrame {
         jMenu1.add(itemMedicalRecords);
 
         itemReports.setText("Reportes");
+        itemReports.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemReportsActionPerformed(evt);
+            }
+        });
         jMenu1.add(itemReports);
 
         item_logout.setText("Salir");
@@ -268,6 +285,18 @@ public class RecordScreen extends javax.swing.JFrame {
         getFormInfo();
     }//GEN-LAST:event_btnCreateActionPerformed
 
+    private void btnReadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReadActionPerformed
+        readArecord();
+    }//GEN-LAST:event_btnReadActionPerformed
+
+    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
+        updateArecord();
+    }//GEN-LAST:event_btnUpdateActionPerformed
+
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+        deleteArecord();
+    }//GEN-LAST:event_btnDeleteActionPerformed
+
     private void itemHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemHomeActionPerformed
         Main Prc = new Main();
         Prc.setLocationRelativeTo(null);
@@ -285,6 +314,12 @@ public class RecordScreen extends javax.swing.JFrame {
         Prc.setLocationRelativeTo(null);
         Prc.setVisible(true);
     }//GEN-LAST:event_itemMedicalRecordsActionPerformed
+
+    private void itemReportsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemReportsActionPerformed
+        ReportsScreen Prc = new ReportsScreen();
+        Prc.setLocationRelativeTo(null);
+        Prc.setVisible(true);
+    }//GEN-LAST:event_itemReportsActionPerformed
 
     private void item_logoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_item_logoutActionPerformed
         JOptionPane.showMessageDialog(null, "Cerrando Sesión...");
@@ -310,18 +345,6 @@ public class RecordScreen extends javax.swing.JFrame {
         open.setLocationRelativeTo(null);
         open.setVisible(true);
     }//GEN-LAST:event_itemPetActionPerformed
-
-    private void btnReadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReadActionPerformed
-        readArecord();
-    }//GEN-LAST:event_btnReadActionPerformed
-
-    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
-        updateArecord();
-    }//GEN-LAST:event_btnUpdateActionPerformed
-
-    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
-        deleteArecord();
-    }//GEN-LAST:event_btnDeleteActionPerformed
     private void getFormInfo() {
 
         String recid = Manager.generateRecordID();

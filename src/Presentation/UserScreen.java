@@ -1,6 +1,7 @@
 package Presentation;
 
 import Data.User;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 /**
@@ -14,6 +15,8 @@ public class UserScreen extends javax.swing.JFrame {
      */
     public UserScreen() {
         initComponents();
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
     }
 
     private void getFormInfo() {
@@ -33,10 +36,6 @@ public class UserScreen extends javax.swing.JFrame {
         txtUserPassword.setText("");
         buttonGroupType.clearSelection();
         buttonGroupStatus.clearSelection();
-//        rbtnAdmin.setSelected(false); 
-//        rbtnEmployee.setSelected(false); 
-//        rbtnActive.setSelected(false); 
-//        rbtnInactive.setSelected(false); 
     }
 
     private void readAuser() {
@@ -153,14 +152,17 @@ public class UserScreen extends javax.swing.JFrame {
         jLabel3.setText("Gestionar Usuarios");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 40, -1, -1));
 
+        jLabel7.setForeground(new java.awt.Color(0, 102, 102));
         jLabel7.setText("Nombre  de usuario");
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 140, -1, -1));
         getContentPane().add(txtUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 140, 280, -1));
 
+        jLabel4.setForeground(new java.awt.Color(0, 102, 102));
         jLabel4.setText("Contraseña");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 190, 100, -1));
         getContentPane().add(txtUserPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 190, 280, -1));
 
+        jLabel1.setForeground(new java.awt.Color(0, 102, 102));
         jLabel1.setText("Tipo");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 240, -1, -1));
 
@@ -203,30 +205,39 @@ public class UserScreen extends javax.swing.JFrame {
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 510, 134, -1));
 
         buttonGroupType.add(rbtnAdmin);
+        rbtnAdmin.setForeground(new java.awt.Color(0, 102, 102));
         rbtnAdmin.setText("Administrador");
         getContentPane().add(rbtnAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 240, -1, -1));
 
         buttonGroupType.add(rbtnEmployee);
+        rbtnEmployee.setForeground(new java.awt.Color(0, 102, 102));
         rbtnEmployee.setText("Colaborador");
         getContentPane().add(rbtnEmployee, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 240, -1, -1));
 
+        jLabel6.setForeground(new java.awt.Color(0, 102, 102));
         jLabel6.setText("Estado");
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 280, -1, -1));
 
         buttonGroupStatus.add(rbtnActive);
+        rbtnActive.setForeground(new java.awt.Color(0, 102, 102));
         rbtnActive.setText("Activo");
         getContentPane().add(rbtnActive, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 280, -1, -1));
 
         buttonGroupStatus.add(rbtnInactive);
+        rbtnInactive.setForeground(new java.awt.Color(0, 102, 102));
         rbtnInactive.setText("Inactivo");
         getContentPane().add(rbtnInactive, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 280, -1, -1));
 
+        jLabel8.setForeground(new java.awt.Color(0, 102, 102));
         jLabel8.setText("Nombre Completo");
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 90, -1, -1));
         getContentPane().add(txtFullName, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 90, 280, -1));
 
+        BG.setForeground(new java.awt.Color(0, 102, 102));
         BG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/General.png"))); // NOI18N
         getContentPane().add(BG, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 810, 540));
+
+        jMenuBar1.setForeground(new java.awt.Color(0, 102, 102));
 
         jMenu1.setText("Menú");
 
@@ -255,6 +266,11 @@ public class UserScreen extends javax.swing.JFrame {
         jMenu1.add(itemMedicalRecords);
 
         itemReports.setText("Reportes");
+        itemReports.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemReportsActionPerformed(evt);
+            }
+        });
         jMenu1.add(itemReports);
 
         item_logout.setText("Salir");
@@ -333,6 +349,12 @@ public class UserScreen extends javax.swing.JFrame {
         Prc.setLocationRelativeTo(null);
         Prc.setVisible(true);
     }//GEN-LAST:event_itemMedicalRecordsActionPerformed
+
+    private void itemReportsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemReportsActionPerformed
+        ReportsScreen Prc = new ReportsScreen();
+        Prc.setLocationRelativeTo(null);
+        Prc.setVisible(true);
+    }//GEN-LAST:event_itemReportsActionPerformed
 
     private void item_logoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_item_logoutActionPerformed
         JOptionPane.showMessageDialog(null, "Cerrando Sesión...");

@@ -1,4 +1,6 @@
-1010,Duke,Labrador,8,27.5,Suda mucho y esta muy inflamado,207850060 - Evan
-62626262,Xam,Beee,9,6,Se le quebro una pata,2020 - Evan
-2262962,Canelo,beagle,5,10,No come,2323 - Maria
-30,Paco,Beagle,6,10,Depresion,6464 - Fran
+3030,Duke,Beagle,3,6,No quiere comer,2020 - Juan Solis
+4040,Omero,Boxer,3,6,Lo atacaron otros perros,6060 - Maria Gaitán
+8080,Bombero,Pastor Alemán,5,8,Problemas para caminar,6060 - Maria Gaitán
+5454,Mia,Rottweiler,8,12,Fracturado en una extremidad,2020 - Juan Solis
+6060,Blake,Beagle,8,10,Muy pesado,10101 - Veterinaria Pet Care
+8181,Blaky,Chiguagua,8,2,Desnutrido,10101 - Veterinaria Pet Care

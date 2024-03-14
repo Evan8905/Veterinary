@@ -7,6 +7,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 /**
@@ -22,6 +23,8 @@ public class PetScreen extends javax.swing.JFrame {
 
     public PetScreen() {
         initComponents();
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
         setClients();
     }
 
@@ -173,6 +176,7 @@ public class PetScreen extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel3.setForeground(new java.awt.Color(0, 102, 102));
         jLabel3.setText("Gestionar Mascotas");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 40, -1, -1));
 
@@ -214,30 +218,37 @@ public class PetScreen extends javax.swing.JFrame {
         jLabel2.setText("Power by UTN Student");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 510, 134, -1));
 
+        jLabel7.setForeground(new java.awt.Color(0, 102, 102));
         jLabel7.setText("Identificación");
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 80, -1, -1));
         getContentPane().add(txtID, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 80, 220, -1));
         getContentPane().add(txtPetName, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 130, 220, -1));
 
+        jLabel4.setForeground(new java.awt.Color(0, 102, 102));
         jLabel4.setText("Nombre");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 130, 60, -1));
 
+        jLabel5.setForeground(new java.awt.Color(0, 102, 102));
         jLabel5.setText("Raza");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 180, -1, -1));
         getContentPane().add(txtbreed, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 180, 220, -1));
         getContentPane().add(txtPetAge, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 230, 220, -1));
 
+        jLabel6.setForeground(new java.awt.Color(0, 102, 102));
         jLabel6.setText("Edad");
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 230, -1, -1));
 
+        jLabel8.setForeground(new java.awt.Color(0, 102, 102));
         jLabel8.setText("Peso");
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 280, -1, -1));
         getContentPane().add(txtPetWeight, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 280, 220, -1));
 
+        jLabel9.setForeground(new java.awt.Color(0, 102, 102));
         jLabel9.setText("Condición Médica");
         getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 330, -1, -1));
         getContentPane().add(txtPetMCondition, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 330, 220, 40));
 
+        jLabel10.setForeground(new java.awt.Color(0, 102, 102));
         jLabel10.setText("Dueño");
         getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 390, -1, -1));
 
@@ -250,6 +261,8 @@ public class PetScreen extends javax.swing.JFrame {
 
         BG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/General.png"))); // NOI18N
         getContentPane().add(BG, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 810, 540));
+
+        jMenuBar1.setForeground(new java.awt.Color(0, 102, 102));
 
         jMenu1.setText("Menú");
 
@@ -278,6 +291,11 @@ public class PetScreen extends javax.swing.JFrame {
         jMenu1.add(itemMedicalRecords);
 
         itemReports.setText("Reportes");
+        itemReports.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemReportsActionPerformed(evt);
+            }
+        });
         jMenu1.add(itemReports);
 
         item_logout.setText("Salir");
@@ -360,6 +378,12 @@ public class PetScreen extends javax.swing.JFrame {
         Prc.setLocationRelativeTo(null);
         Prc.setVisible(true);
     }//GEN-LAST:event_itemMedicalRecordsActionPerformed
+
+    private void itemReportsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemReportsActionPerformed
+        ReportsScreen Prc = new ReportsScreen();
+        Prc.setLocationRelativeTo(null);
+        Prc.setVisible(true);
+    }//GEN-LAST:event_itemReportsActionPerformed
 
     private void item_logoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_item_logoutActionPerformed
         JOptionPane.showMessageDialog(null, "Cerrando Sesión...");

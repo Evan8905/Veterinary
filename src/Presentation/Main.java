@@ -1,5 +1,6 @@
 package Presentation;
 
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 /**
@@ -13,6 +14,8 @@ public class Main extends javax.swing.JFrame {
      */
     public Main() {
         initComponents();
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
     }
 
     /**
@@ -98,6 +101,11 @@ public class Main extends javax.swing.JFrame {
         btnReports.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/reportIcon.png"))); // NOI18N
         btnReports.setText("Reportes");
         btnReports.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, new java.awt.Color(204, 204, 204), new java.awt.Color(51, 255, 255)));
+        btnReports.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReportsActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnReports, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 280, 130, 90));
 
         BG.setBackground(new java.awt.Color(102, 102, 102));
@@ -131,6 +139,11 @@ public class Main extends javax.swing.JFrame {
         jMenu1.add(itemMedicalRecords);
 
         itemReports.setText("Reportes");
+        itemReports.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemReportsActionPerformed(evt);
+            }
+        });
         jMenu1.add(itemReports);
 
         item_logout.setText("Salir");
@@ -176,47 +189,6 @@ public class Main extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void itemMedicalRecordsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemMedicalRecordsActionPerformed
-        RecordScreen Prc = new RecordScreen();
-        Prc.setLocationRelativeTo(null);
-        Prc.setVisible(true);
-    }//GEN-LAST:event_itemMedicalRecordsActionPerformed
-
-    private void item_logoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_item_logoutActionPerformed
-        JOptionPane.showMessageDialog(null, "Saliendo del Sistema...");
-        System.exit(0);
-    }//GEN-LAST:event_item_logoutActionPerformed
-
-    private void itemClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemClientActionPerformed
-        ClientScreen open = new ClientScreen();
-        open.setLocationRelativeTo(null);
-        open.setVisible(true);
-    }//GEN-LAST:event_itemClientActionPerformed
-
-    private void itemUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemUserActionPerformed
-        UserScreen open = new UserScreen();
-        open.setLocationRelativeTo(null);
-        open.setVisible(true);
-    }//GEN-LAST:event_itemUserActionPerformed
-
-    private void itemPetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemPetActionPerformed
-        PetScreen open = new PetScreen();
-        open.setLocationRelativeTo(null);
-        open.setVisible(true);
-    }//GEN-LAST:event_itemPetActionPerformed
-
-    private void itemAppointmentsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemAppointmentsActionPerformed
-        AppointmentScreen Prc = new AppointmentScreen();
-        Prc.setLocationRelativeTo(null);
-        Prc.setVisible(true);
-    }//GEN-LAST:event_itemAppointmentsActionPerformed
-
-    private void itemHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemHomeActionPerformed
-        Main Prc = new Main();
-        Prc.setLocationRelativeTo(null);
-        Prc.setVisible(true);
-    }//GEN-LAST:event_itemHomeActionPerformed
-
     private void btnApointmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApointmentActionPerformed
         AppointmentScreen Prc = new AppointmentScreen();
         Prc.setLocationRelativeTo(null);
@@ -228,6 +200,61 @@ public class Main extends javax.swing.JFrame {
         Prc.setLocationRelativeTo(null);
         Prc.setVisible(true);
     }//GEN-LAST:event_btnRecordsActionPerformed
+
+    private void btnReportsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportsActionPerformed
+        ReportsScreen Prc = new ReportsScreen();
+        Prc.setLocationRelativeTo(null);
+        Prc.setVisible(true);
+    }//GEN-LAST:event_btnReportsActionPerformed
+
+    private void itemHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemHomeActionPerformed
+        Main Prc = new Main();
+        Prc.setLocationRelativeTo(null);
+        Prc.setVisible(true);
+    }//GEN-LAST:event_itemHomeActionPerformed
+
+    private void itemAppointmentsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemAppointmentsActionPerformed
+        AppointmentScreen Prc = new AppointmentScreen();
+        Prc.setLocationRelativeTo(null);
+        Prc.setVisible(true);
+    }//GEN-LAST:event_itemAppointmentsActionPerformed
+
+    private void itemMedicalRecordsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemMedicalRecordsActionPerformed
+        RecordScreen Prc = new RecordScreen();
+        Prc.setLocationRelativeTo(null);
+        Prc.setVisible(true);
+    }//GEN-LAST:event_itemMedicalRecordsActionPerformed
+
+    private void itemReportsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemReportsActionPerformed
+        ReportsScreen Prc = new ReportsScreen();
+        Prc.setLocationRelativeTo(null);
+        Prc.setVisible(true);
+    }//GEN-LAST:event_itemReportsActionPerformed
+
+    private void item_logoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_item_logoutActionPerformed
+        JOptionPane.showMessageDialog(null, "Cerrando Sesión...");
+        Login Prc = new Login();
+        Prc.setLocationRelativeTo(null);
+        Prc.setVisible(true);
+    }//GEN-LAST:event_item_logoutActionPerformed
+
+    private void itemUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemUserActionPerformed
+        UserScreen open = new UserScreen();
+        open.setLocationRelativeTo(null);
+        open.setVisible(true);
+    }//GEN-LAST:event_itemUserActionPerformed
+
+    private void itemClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemClientActionPerformed
+        ClientScreen open = new ClientScreen();
+        open.setLocationRelativeTo(null);
+        open.setVisible(true);
+    }//GEN-LAST:event_itemClientActionPerformed
+
+    private void itemPetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemPetActionPerformed
+        PetScreen open = new PetScreen();
+        open.setLocationRelativeTo(null);
+        open.setVisible(true);
+    }//GEN-LAST:event_itemPetActionPerformed
 
     /**
      * @param args the command line arguments

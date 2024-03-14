@@ -1,3 +1,10 @@
-30,Sat Mar 30 00:00:00 CST 2024,4,00,AM,Vacunación,DR Evan - dr
-62626262,Sat Mar 30 00:00:00 CST 2024,3,20,PM,Cirugía,Maria Rojas - Mrojas64
-30,Fri Mar 29 12:41:08 CST 2024,4,30,PM,Corte de pelo,Pamela - p98
+REG0001,4040 - Omero,Sat Mar 30 10:20:22 CST 2024,5,40,PM,Cirugía,DR Javier Lopez - drlopez
+REG0002,3030 - Duke,Thu May 23 10:20:22 CST 2024,3,40,PM,Consulta Médica,Evan Duarte S - eds
+REG0003,3030 - Duke,Sat Mar 16 12:09:07 CST 2024,2,30,PM,Cirugía,DR Javier Lopez - drlopez
+REG0004,3030 - Duke,Sat Mar 16 00:00:00 CST 2024,3,00,AM,Esterilización,DR Javier Lopez - drlopez
+REG0005,8080 - Bombero,Tue Mar 26 15:47:41 CST 2024,1,00,AM,Cirugía,Fernanda - F24
+REG0006,8080 - Bombero,Sat Mar 30 15:47:41 CST 2024,1,00,AM,Cirugía,Fernanda - F24
+REG0007,8080 - Bombero,Sat Mar 30 15:47:41 CST 2024,1,00,AM,Corte de pelo,Fernanda - F24
+REG0008,8080 - Bombero,Sat Mar 23 15:48:35 CST 2024,1,20,PM,Corte de pelo,DR Javier Lopez - drlopez
+REG0009,5454 - Mia,Sat Mar 23 15:50:43 CST 2024,4,20,PM,Corte de pelo,Fernanda - F24
+REG0010,5454 - Mia,Sat Mar 30 15:50:43 CST 2024,4,20,PM,Vacunación,Fernanda - F24

@@ -1,6 +1,3 @@
-2323,Maria,CQ,84521348
-2020,Evan,CQ san Carlos,85254762
-6464,Fran,Alajuela,85451175
-3535,Pamela,San Jose,3655889
-656265652,Xavier,Ciudad Quesada,5448484884
-0,Veterinaria,CQ,85243695
+2020,Juan Solis,CQ centro,85246963
+6060,Maria Gaitán,Florencia centro,87456321
+10101,Veterinaria Pet Care,CQ Barrio San Martin,24008963

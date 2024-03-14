@@ -6,6 +6,7 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
+import javax.swing.JFrame;
 
 /**
  *
@@ -18,6 +19,7 @@ public class ClientScreen extends javax.swing.JFrame {
      */
     public ClientScreen() {
         initComponents();
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
 
     /**
@@ -67,21 +69,31 @@ public class ClientScreen extends javax.swing.JFrame {
         jLabel2.setText("Power by UTN Student");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 470, 134, -1));
 
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 102, 102));
         jLabel3.setText("Datos de contacto del cliente");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 40, -1, -1));
         getContentPane().add(txtClientName, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 160, 220, -1));
         getContentPane().add(txtAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 210, 220, -1));
         getContentPane().add(txtPhoneNumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 260, 220, -1));
 
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 102, 102));
         jLabel4.setText("Nombre");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 160, 60, -1));
 
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 102, 102));
         jLabel5.setText("Dirección");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 210, -1, -1));
 
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(0, 102, 102));
         jLabel6.setText("Teléfono");
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 260, -1, -1));
 
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(0, 102, 102));
         jLabel7.setText("Identificación");
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 110, -1, -1));
         getContentPane().add(txtID, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 110, 220, -1));
@@ -148,6 +160,11 @@ public class ClientScreen extends javax.swing.JFrame {
         jMenu1.add(itemMedicalRecords);
 
         itemReports.setText("Reportes");
+        itemReports.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemReportsActionPerformed(evt);
+            }
+        });
         jMenu1.add(itemReports);
 
         item_logout.setText("Salir");
@@ -227,6 +244,12 @@ public class ClientScreen extends javax.swing.JFrame {
         Prc.setVisible(true);
     }//GEN-LAST:event_itemMedicalRecordsActionPerformed
 
+    private void itemReportsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemReportsActionPerformed
+        ReportsScreen Prc = new ReportsScreen();
+        Prc.setLocationRelativeTo(null);
+        Prc.setVisible(true);
+    }//GEN-LAST:event_itemReportsActionPerformed
+
     private void item_logoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_item_logoutActionPerformed
         JOptionPane.showMessageDialog(null, "Cerrando Sesión...");
         Login Prc = new Login();
@@ -272,7 +295,7 @@ public class ClientScreen extends javax.swing.JFrame {
             screen.setLocationRelativeTo(null);
             screen.setVisible(true);
         } else {
-            JOptionPane.showMessageDialog(null, "Puedes completar el registro despues!");
+            JOptionPane.showMessageDialog(null, "Puedes completar el registro después");
         }
     }
 
